@@ -13,20 +13,20 @@
 2. 启动镜像：
 
    ```shell
-   docker run -itd --name os1 --privileged=true -p 10000:22 300e315adb2f  ./sbin/init
+   docker run -itd --name os1 -v D:/soft/docker/centos:/soft --privileged=true -p 10000:22 300e315adb2f  ./sbin/init
    ```
 
    
 
    ```wi
-   $ docker run -itd --name os1 --privileged=true -p 10000:22 300e315adb2f  /sbin/init
+   $ docker run -itd --name os1 -v D:/soft/docker/centos:/soft --privileged=true -p 10000:22 300e315adb2f  /sbin/init
    0d675f73207651c8ae4771af3be648c5d34cadb265cde41477f43cafe94d30dd
    docker: Error response from daemon: OCI runtime create failed: container_linux.go:367: starting container process caused: exec: "D:/soft/Git/usr/sbin/init": stat D:/soft/Git/usr/sbin/init: no such file or directory: unknown.
    
    这一步会报错，是因为找不到该目录，网上找了很久，只需要把加个.即可
    
-   docker run -itd --name os1 --privileged=true -p 10000:22 300e315adb2f  ./sbin/init
-   	解析：启动名为os1的容器，使root拥有真正的权限：privileged=true，端口映射：10000=>22 
+   docker run -itd --name os1 -v D:/soft/docker/centos:/soft --privileged=true -p 10000:22 300e315adb2f  ./sbin/init
+   	解析：启动名为os1的容器，使root拥有真正的权限：privileged=true，端口映射：10000=>22 ，宿主机目录共享：D:/soft/docker/centos=>/soft
    ```
 
 3. 进入容器：
