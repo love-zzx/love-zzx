@@ -32,7 +32,7 @@
 3. 进入容器：
 
    ```
-   **winpty docker exec -it os1 bash** 
+   winpty docker exec -it os1 bash
    ```
 
    
@@ -66,7 +66,7 @@
    2. 安装ssh：
 
       ```
-      **yum install -y openssh-server** 
+      yum install -y openssh-server
       ```
 
       
@@ -93,23 +93,17 @@
       yum install -y vim passwd
       ```
    
-      
-   
    2. 开启远程登录权限：
    
       ```
       vim /etc/ssh/sshd_config #打开注释 PermitRootLogin yes, 允许密码登录,保存退出
       ```
    
-       
-   
    3. 设置root密码：
    
       ```
       passwd root
       ```
-   
-      
    
    4. 宿主机ssh远程登录：
    
