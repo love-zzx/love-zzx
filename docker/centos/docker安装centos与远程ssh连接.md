@@ -2,9 +2,21 @@
 
 ## 安装centos
 
-1. 下载镜像：**docker pull centos**
+1. 下载镜像：
 
-2. 启动镜像：**docker run -itd --name os1 --privileged=true -p 10000:22 300e315adb2f  ./sbin/init**
+   ```dockerfile
+   docker pull centos
+   ```
+
+   
+
+2. 启动镜像：
+
+   ```shell
+   docker run -itd --name os1 --privileged=true -p 10000:22 300e315adb2f  ./sbin/init
+   ```
+
+   
 
    ```wi
    $ docker run -itd --name os1 --privileged=true -p 10000:22 300e315adb2f  /sbin/init
@@ -17,23 +29,93 @@
    	解析：启动名为os1的容器，使root拥有真正的权限：privileged=true，端口映射：10000=>22 
    ```
 
-3. 进入容器：**winpty docker exec -it os1 bash** 
+3. 进入容器：
 
-4. ifconfig安装：**yum install -y net-tools**
+   ```
+   **winpty docker exec -it os1 bash** 
+   ```
 
-5. service安装：**yum install -y initscripts**
+   
+
+4. ifconfig安装：
+
+   ```
+   yum install -y net-tools
+   ```
+
+   
+
+5. service安装：
+
+   ```
+   yum install -y initscripts
+   ```
+
+   
 
 6. ssh安装： 
 
-   1. 查看是否已安装：**sshd rpm -qa | grep ssh**
-   2. 安装ssh：**yum install -y openssh-server** 
-   3. 启动ssh：**service sshd restart**
-   4. 查看是否启动22端口：**netstat -anpt |grep sshd**
+   1. 查看是否已安装：
+
+      ```
+      sshd rpm -qa | grep ssh
+      ```
+
+      
+
+   2. 安装ssh：
+
+      ```
+      **yum install -y openssh-server** 
+      ```
+
+      
+
+   3. 启动ssh：
+
+      ```
+      service sshd restart
+      ```
+
+      
+
+   4. 查看是否启动22端口：
+
+      ```
+      netstat -anpt |grep sshd
+      ```
+
+      
 
 7. 开启远程连接ssh
 
-   1. **yum install -y vim passwd**
-   2. 开启远程登录权限：**vim /etc/ssh/sshd_config**  #打开注释 PermitRootLogin yes, 允许密码登录,保存退出
-   3. 设置root密码：passwd root
-   4. 宿主机ssh远程登录：**ssh root@127.0.0.1 -p 10000** 或者使用xshell账号密码登录
+   1. ```
+      yum install -y vim passwd
+      ```
+   
+      
+   
+   2. 开启远程登录权限：
+   
+      ```
+      vim /etc/ssh/sshd_config #打开注释 PermitRootLogin yes, 允许密码登录,保存退出
+      ```
+   
+       
+   
+   3. 设置root密码：
+   
+      ```
+      passwd root
+      ```
+   
+      
+   
+   4. 宿主机ssh远程登录：
+   
+      ```
+      ssh root@127.0.0.1 -p 10000 或者使用xshell账号密码登录
+      ```
+   
+      
 
